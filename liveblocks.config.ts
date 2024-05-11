@@ -81,9 +81,12 @@ type RoomEvent = {
 // Optionally, when using Comments, ThreadMetadata represents metadata on
 // each thread. Can only contain booleans, strings, and numbers.
 export type ThreadMetadata = {
-  // resolved: boolean;
-  // quote: string;
-  // time: number;
+  resolved: boolean;
+  zIndex: number;
+  quote: string;
+  time?: number;
+  x: number;
+  y: number;
 };
 
 // Room-level hooks, use inside `RoomProvider`
@@ -131,8 +134,10 @@ export const {
     // These hooks can be exported from either context
     // useUser,
     // useRoomInfo
-  }
-} = createRoomContext<Presence, Storage, UserMeta, RoomEvent, ThreadMetadata>(client);
+  },
+} = createRoomContext<Presence, Storage, UserMeta, RoomEvent, ThreadMetadata>(
+  client,
+);
 
 // Project-level hooks, use inside `LiveblocksProvider`
 export const {
@@ -146,5 +151,5 @@ export const {
     // These hooks can be exported from either context
     useUser,
     useRoomInfo,
-  }
+  },
 } = createLiveblocksContext<UserMeta, ThreadMetadata>(client);

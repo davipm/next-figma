@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { ThreadData } from "@liveblocks/core";
 import { ThreadMetadata } from "@/liveblocks.config";

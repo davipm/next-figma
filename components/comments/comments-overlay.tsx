@@ -37,6 +37,7 @@ const OverlayThread = ({ thread, maxZIndex }: OverlayThreadProps) => {
 
   const handleIncreaseZIndex = useCallback(() => {
     if (maxZIndex === thread.metadata.zIndex) return;
+
     editThreadMetadata({
       threadId: thread.id,
       metadata: {

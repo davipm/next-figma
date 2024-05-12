@@ -1,8 +1,6 @@
-"use client";
-
 import { useState } from "react";
 
-export function NewThreadCursor() {
+export function NewThreadCursor({ display }: { display: boolean }) {
   const [item, setItem] = useState(null);
 
   return (

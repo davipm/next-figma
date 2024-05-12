@@ -1,10 +1,11 @@
-"use client";
+import Image from "next/image";
+import { Composer, ComposerProps } from "@liveblocks/react-comments";
 
-import { useState } from "react";
+type Props = {
+  onComposerSubmit: ComposerProps["onComposerSubmit"];
+};
 
-export function PinnedComposer() {
-  const [item, setItem] = useState(null);
-
+export function PinnedComposer({ onComposerSubmit, ...rest }: Props) {
   return (
     <div>
       <p></p>

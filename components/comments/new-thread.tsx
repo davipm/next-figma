@@ -16,21 +16,40 @@ import { PinnedComposer } from "@/components/comments/pinned-composer";
 import { ComposerSubmitComment } from "@liveblocks/react-comments/primitives";
 import { NewThreadCursor } from "@/components/comments/new-thread-cursor";
 
+/**
+ * Type definition for the coordinates of the composer.
+ */
 type ComposerCoords = null | {
   x: number;
   y: number;
 };
 
+/**
+ * Props type definition for the NewThread component.
+ *
+ * @property {ReactNode} children - The children elements to be rendered within the NewThread component.
+ */
 type Props = {
   children: ReactNode;
 };
 
+/**
+ * Enum for the different states of comment creation.
+ */
 enum State {
   Placing = "placing",
   Placed = "placed",
   Complete = "complete",
 }
 
+/**
+ * NewThread Component
+ *
+ * This component allows users to create a new thread by placing a composer at the clicked position.
+ * It manages the state of the composer and handles the creation of new threads with metadata including coordinates and z-index.
+ *
+ * @param {Props} props - The properties for the NewThread component.
+ */
 export function NewThread({ children }: Props) {
   const createThread = useCreateThread();
   const maxZIndex = useMaxZIndex();

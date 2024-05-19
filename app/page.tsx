@@ -1,9 +1,5 @@
-import Image from "next/image";
+import dynamic from "next/dynamic";
 
-export default function Home() {
-  return (
-    <div>
-      <p>Page</p>
-    </div>
-  );
-}
+const App = dynamic(() => import("./app"), { ssr: false });
+
+export default App;

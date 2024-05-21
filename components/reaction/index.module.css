@@ -1,0 +1,60 @@
+.goUp0 {
+  opacity: 0;
+  animation:
+    goUpAnimation0 2s,
+    fadeOut 2s;
+}
+
+.goUp1 {
+  opacity: 0;
+  animation:
+    goUpAnimation1 2s,
+    fadeOut 2s;
+}
+
+.goUp2 {
+  opacity: 0;
+  animation:
+    goUpAnimation2 2s,
+    fadeOut 2s;
+}
+
+.leftRight0 {
+  animation: leftRightAnimation0 0.3s alternate infinite ease-in-out;
+}
+
+.leftRight1 {
+  animation: leftRightAnimation0 0.3s alternate infinite ease-in-out;
+}
+
+.leftRight2 {
+  animation: leftRightAnimation0 0.3s alternate infinite ease-in-out;
+}
+
+@keyframes goUpAnimation0 {
+  from {
+    transform: translate(0px, 0px);
+  }
+
+  to {
+    transform: translate(0px, -400px);
+  }
+}
+
+@keyframes goUpAnimation1 {
+}
+
+@keyframes goUpAnimation2 {
+}
+
+@keyframes leftRightAnimation0 {
+}
+
+@keyframes leftRightAnimation1 {
+}
+
+@keyframes leftRightAnimation2 {
+}
+
+@keyframes fadeOut {
+}

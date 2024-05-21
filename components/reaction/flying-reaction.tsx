@@ -1,15 +1,18 @@
-"use client";
+import styles from "./index.module.css";
 
-import { useState } from "react";
+type Props = {
+  x: number;
+  y: number;
+  timestamp: number;
+  value: string;
+};
 
-// import { Container } from "./styles";
-
-export function FlyingReaction() {
-  const [item, setItem] = useState(null);
-
+export function FlyingReaction({ x, y, timestamp, value }: Props) {
   return (
-    <div>
-      <p></p>
+    <div className={`pointer-events-none absolute select-none`}>
+      <div>
+        <div>FlyingReaction</div>
+      </div>
     </div>
   );
 }

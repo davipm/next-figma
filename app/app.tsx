@@ -23,6 +23,9 @@ import {
   renderCanvas,
 } from "@/lib/canvas";
 import { handleDelete, handleKeyDown } from "@/lib/key-events";
+import { LeftSidebar } from "@/components/left-sidebar";
+import { Live } from "@/components/live";
+import { RightSidebar } from "@/components/right-sidebar";
 
 export default function App() {
   const undo = useUndo();
@@ -259,7 +262,18 @@ export default function App() {
         handleActiveElement={handleActiveElement}
       />
 
-      <section className="flex h-full flex-row"></section>
+      <section className="flex h-full flex-row">
+        <LeftSidebar allShapes={Array.from(canvasObjects)} />
+        <Live canvasRef={canvasRef} undo={undo} redo={redo} />
+        <RightSidebar
+          elementAttributes={elementAttributes}
+          setElementAttributes={setElementAttributes}
+          fabricRef={fabricRef}
+          activeObjectRef={activeObjectRef}
+          isEditingRef={isEditingRef}
+          syncShapeInStorage={syncShapeInStorage}
+        />
+      </section>
     </main>
   );
 }

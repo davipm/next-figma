@@ -11,7 +11,7 @@ export function Room({ children }: { children: ReactNode }) {
     <RoomProvider
       id="fig-room"
       initialPresence={{ cursor: null, cursorColor: null, editingText: null }}
-      initialStorage={{ canvasObject: new LiveMap() }}
+      initialStorage={{ canvasObjects: new LiveMap() }}
     >
       <ClientSideSuspense fallback={<Loader />}>
         {() => children}

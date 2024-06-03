@@ -4,7 +4,7 @@ import {
   fontWeightOptions,
 } from "@/constants";
 
-import { Select } from "@/components/ui/select";
+import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const selectConfigs = [
   {
@@ -21,7 +21,7 @@ const selectConfigs = [
 ];
 
 type TextProps = {
-  fontFamily: string;
+  fontFamily: "fontFamily";
   fontSize: string;
   fontWeight: string;
   handleInputChange: (property: string, value: string) => void;
@@ -80,7 +80,22 @@ const RenderSelect = ({
   fontFamily,
   handleInputChange,
 }: Props) => (
-  <div>
-    <div></div>
-  </div>
+  <Select
+    key={config.property}
+    onValueChange={(value) => handleInputChange(config.property, value)}
+    value={
+      config.property === "fontFamily"
+        ? fontFamily
+        : config.property === "fontSize"
+          ? fontSize
+          : fontWeight
+    }
+  >
+    <SelectTrigger className="no-ring w-full rounded-sm border border-primary-grey-200">
+      <SelectValue />
+    </SelectTrigger>
+    <SelectTrigger className="border-primary-grey-200">
+      <SelectValue />
+    </SelectTrigger>
+  </Select>
 );

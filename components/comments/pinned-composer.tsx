@@ -20,6 +20,7 @@ export function PinnedComposer({ onComposerSubmit, ...rest }: Props) {
 
       <div className="shadow bg-white rounded-lg flex flex-col text-sm min-w-9 overflow-hidden p-2">
         <Composer
+          threadId="threadId"
           onComposerSubmit={onComposerSubmit}
           autoFocus={true}
           onKeyUp={(event) => {

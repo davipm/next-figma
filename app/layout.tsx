@@ -3,6 +3,7 @@ import "./globals.css";
 
 import { ReactNode } from "react";
 import { Room } from "@/app/room";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -20,7 +21,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={`${workSans.className} bg-primary-grey-200`}>
-        <Room>{children}</Room>
+        <Room>
+          <TooltipProvider>{children}</TooltipProvider>
+        </Room>
       </body>
     </html>
   );

@@ -28,10 +28,10 @@ export function Dimensions({
             key={item.label}
             className="flex flex-1 items-center gap-3 rounded-sm"
           >
-            <label htmlFor={item.property} className="text-[10px] font-bold">
+            <Label htmlFor={item.property} className="text-[10px] font-bold">
               {item.label}
-            </label>
-            <input
+            </Label>
+            <Input
               type="number"
               id={item.property}
               placeholder="100"

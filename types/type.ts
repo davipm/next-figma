@@ -1,4 +1,5 @@
 import { BaseUserMeta, User } from "@liveblocks/client";
+// @ts-ignore
 import { Gradient, Pattern } from "fabric/fabrixc-impl";
 
 export enum CursorMode {

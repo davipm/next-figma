@@ -4,7 +4,7 @@ import {
   fontWeightOptions,
 } from "@/constants";
 
-import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 
 const selectConfigs = [
   {
@@ -92,10 +92,23 @@ const RenderSelect = ({
     }
   >
     <SelectTrigger className="no-ring w-full rounded-sm border border-primary-grey-200">
-      <SelectValue />
+      <SelectValue 
+        placeholder={
+          config.property === 'fontFamily' 
+          ? 'Choose a font' 
+          : config.property === 'fontSize' 
+            ? '30' 
+            : 'semibold'
+          }
+        />
     </SelectTrigger>
-    <SelectTrigger className="border-primary-grey-200">
-      <SelectValue />
-    </SelectTrigger>
+    
+    <SelectContent className="border-primary-grey-200 bg-primary-black text-primary-grey-300">
+      {config.options.map(option => (
+        <SelectItem key={option.value} value={option.value} className="hover:bg-primary-green hover:text-primary-black">
+          {option.label}
+        </SelectItem>
+      ))}
+    </SelectContent>
   </Select>
 );

@@ -88,32 +88,77 @@ export default function App() {
     canvasObjects.set(objectId, shapeData);
   }, []);
 
+  // const handleActiveElement = (elem: ActiveElement) => {
+  //   setActiveElement(elem);
+  //
+  //   switch (elem?.value) {
+  //     case "reset":
+  //       deleteAllShapes();
+  //       fabricRef.current?.clear();
+  //       setActiveElement(defaultNavElement);
+  //       break;
+  //     case "delete":
+  //       handleDelete(fabricRef.current as any, deleteShapeFromStorage);
+  //       setActiveElement(defaultNavElement);
+  //       break;
+  //     case "image":
+  //       imageInputRef.current?.click();
+  //       isDrawing.current = false;
+  //       if (fabricRef.current) {
+  //         fabricRef.current.isDrawingMode = false;
+  //       }
+  //       break;
+  //     case "comments":
+  //       break;
+  //     default:
+  //       selectedShapeRef.current = elem?.value as string;
+  //       break;
+  //   }
+  // };
+
   const handleActiveElement = (elem: ActiveElement) => {
     setActiveElement(elem);
 
-    switch (elem?.value) {
-      case "reset":
-        deleteAllShapes();
-        fabricRef.current?.clear();
-        setActiveElement(defaultNavElement);
-        break;
-      case "delete":
-        handleDelete(fabricRef.current as any, deleteShapeFromStorage);
-        setActiveElement(defaultNavElement);
-        break;
-      case "image":
-        imageInputRef.current?.click();
-        isDrawing.current = false;
-        if (fabricRef.current) {
-          fabricRef.current.isDrawingMode = false;
-        }
-        break;
-      case "comments":
-        break;
-      default:
-        selectedShapeRef.current = elem?.value as string;
-        break;
+    if (!elem?.value) return;
+
+    const actions = new Map<string, () => void>([
+      ["reset", handleReset],
+      ["delete", handleDeleteAction],
+      ["image", handleImageInput],
+      ["comments", () => {}], // No operation for comments
+    ]);
+
+    const action = actions.get(elem.value);
+    if (action) {
+      action();
+    } else {
+      handleDefaultAction(elem.value);
     }
+  };
+
+  const handleReset = () => {
+    deleteAllShapes();
+    fabricRef.current?.clear();
+    setActiveElement(defaultNavElement);
+  };
+
+  const handleDeleteAction = () => {
+    if (fabricRef.current) {
+      handleDelete(fabricRef.current, deleteShapeFromStorage);
+    }
+    setActiveElement(defaultNavElement);
+  };
+
+  const handleImageInput = () => {
+    imageInputRef.current?.click();
+    isDrawing.current = false;
+    if (fabricRef.current) {
+      fabricRef.current.isDrawingMode = false;
+    }
+  };
+
+  const handleDefaultAction = (value: string) => {
+    selectedShapeRef.current = value;
   };
 
   useEffect(() => {

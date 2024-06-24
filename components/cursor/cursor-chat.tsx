@@ -38,6 +38,9 @@ export function CursorChat({ cursor, cursorState, setCursorState, updateMyPresen
       {cursorState.mode === CursorMode.Chat && (
         <>
           <CursorSVG color="#000" />
+          <div className="flex flex-1">
+            <div className=""></div>
+          </div>
           <div
             onKeyUp={(event) => event.stopPropagation()}
             style={{ borderRadius: 20 }}

@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { ShapesMenuProps } from "@/types/type";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 export function ShapesMenu({
   item,
@@ -20,8 +22,33 @@ export function ShapesMenu({
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger></DropdownMenuTrigger>
-        <DropdownMenuTrigger></DropdownMenuTrigger>
+        <DropdownMenuTrigger asChild className="no-ring">
+          <Button
+            className="relative h-5 w-5 object-contain"
+            onClick={() => handleActiveElement(item)}
+          >
+            <Image
+              src={isDropdownElem ? activeElement.icon : item.icon}
+              alt={item.name}
+              className={isDropdownElem ? "invert" : ""}
+              fill
+            />
+          </Button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuTrigger className="mt-5 flex flex-col gap-y-1 border-none bg-primary-black py-4 text-white">
+          {item.value.map((elem) => (
+            <Button
+              key={elem?.name}
+              onClick={() => handleActiveElement(elem)}
+              className={`flex h-fit justify-between gap-10 rounded-none px-5 py-3 focus:border-none ${activeElement.value === elem?.value ? "bg-primary-green" : "hover:bg-primary-grey-200"}`}
+            >
+              <div className="group flex items-center gap-2">
+                {/* TODO: Finishi  */}
+              </div>
+            </Button>
+          ))}
+        </DropdownMenuTrigger>
       </DropdownMenu>
 
       <input

@@ -16,12 +16,14 @@ import { useInterval } from "@/hooks/use-interval";
 import {
   ContextMenu,
   ContextMenuContent,
+  ContextMenuItem,
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 import { FlyingReaction } from "@/components/reaction/flying-reaction";
 import { Comments } from "@/components/comments/comments";
 import { LiveCursors } from "@/components/cursor/live-cursors";
 import { ReactionSelector } from "@/components/reaction/reaction-button";
+import { shortcuts } from "@/constants";
 
 type Props = {
   canvasRef: MutableRefObject<HTMLCanvasElement | null>;
@@ -229,7 +231,18 @@ export function Live({ redo, undo, canvasRef }: Props) {
         <Comments />
       </ContextMenuTrigger>
 
-      <ContextMenuContent></ContextMenuContent>
+      <ContextMenuContent className="right-menu-content">
+        {shortcuts.map((item) => (
+          <ContextMenuItem
+            key={item.key}
+            className="right-menu-item"
+            onClick={() => handleContextMenuClick(item.name)}
+          >
+            <p>{item.name}</p>
+            <p className="text-xs text-primary-grey-300">{item.shortcut}</p>
+          </ContextMenuItem>
+        ))}
+      </ContextMenuContent>
     </ContextMenu>
   );
 }

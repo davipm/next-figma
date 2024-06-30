@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ShapesMenuProps } from "@/types/type";
 import {
   DropdownMenu,
+  DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
@@ -36,7 +37,7 @@ export function ShapesMenu({
           </Button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuTrigger className="mt-5 flex flex-col gap-y-1 border-none bg-primary-black py-4 text-white">
+        <DropdownMenuContent className="mt-5 flex flex-col gap-y-1 border-none bg-primary-black py-4 text-white">
           {item.value.map((elem) => (
             <Button
               key={elem?.name}
@@ -65,7 +66,7 @@ export function ShapesMenu({
               </div>
             </Button>
           ))}
-        </DropdownMenuTrigger>
+        </DropdownMenuContent>
       </DropdownMenu>
 
       <input

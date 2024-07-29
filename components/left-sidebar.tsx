@@ -11,6 +11,7 @@ export function LeftSidebar({ allShapes }: { allShapes: Array<any> }) {
         <h3 className="border border-primary-grey-200 px-5 py-4 text-xs uppercase">
           Layers
         </h3>
+
         <div className="flex flex-col">
           {allShapes?.map((shape: any) => {
             const info = getShapeInfo(shape[1]?.type);
